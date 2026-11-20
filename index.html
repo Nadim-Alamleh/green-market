@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جرين ماركت | Green Market</title>
+  <meta name="description" content="جرين ماركت - Green Market | تواصل معنا، شاركنا رأيك وقيّم تجربتك">
+  <meta name="theme-color" content="#0b3d24">
+  <meta property="og:title" content="جرين ماركت | Green Market">
+  <meta property="og:image" content="assets/cover.jpg">
+  <link rel="icon" href="assets/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --g-900:#062a18; --g-800:#0b3d24; --g-700:#11553a; --g-600:#1b6b3a;
+      --g-400:#7cb342; --g-300:#9ccc65; --g-200:#c5e1a5; --cream:#f6f8ee;
+      --glass:rgba(255,255,255,.06); --line:rgba(156,204,101,.22);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{background:#062a18}
+    body{
+      font-family:'Tajawal',system-ui,sans-serif; color:var(--cream); min-height:100vh;
+      background:
+        radial-gradient(900px 500px at 85% -10%, rgba(156,204,101,.18), transparent 60%),
+        radial-gradient(700px 500px at -10% 110%, rgba(124,179,66,.16), transparent 60%),
+        linear-gradient(160deg,var(--g-800),var(--g-900) 70%);
+      background-attachment:fixed; display:flex; justify-content:center; padding:24px 14px 30px;
+    }
+    /* soft leaf pattern */
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M20 50c10-22 30-26 40-26-2 18-16 32-40 26z' fill='%239ccc65'/%3E%3C/svg%3E");}
+    .card{position:relative;width:100%;max-width:440px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+      border:1px solid var(--line);border-radius:28px;overflow:hidden;backdrop-filter:blur(10px);
+      box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);animation:rise .7s ease both}
+    .cover{height:170px;background:url("assets/cover.jpg") 0% 88%/300% auto no-repeat;position:relative;filter:saturate(1.15)}
+    .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,42,24,0) 30%,rgba(11,61,36,.95))}
+    .avatar{width:124px;height:124px;border-radius:50%;margin:-66px auto 0;position:relative;z-index:2;
+      background:#f6f7ee url("assets/logo.jpg") center/100% no-repeat;border:4px solid var(--g-300);
+      box-shadow:0 0 0 6px rgba(156,204,101,.15),0 12px 30px rgba(0,0,0,.4)}
+    .head{text-align:center;padding:14px 22px 6px}
+    .head h1{font-size:28px;font-weight:800;letter-spacing:.2px}
+    .head .en{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:3px;font-size:13px;color:var(--g-300);margin-top:2px}
+    .head p{color:var(--g-200);opacity:.8;font-size:15px;margin-top:10px}
+    .links{padding:18px 20px 8px;display:grid;gap:12px}
+    .btn{--c:var(--g-300);display:flex;align-items:center;gap:14px;width:100%;padding:14px 16px;border-radius:16px;
+      background:var(--glass);border:1px solid var(--line);color:var(--cream);text-decoration:none;font:700 17px 'Tajawal',system-ui,sans-serif;
+      cursor:pointer;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s,background .25s;
+      animation:rise .6s ease both}
+    .btn:nth-child(1){animation-delay:.08s}.btn:nth-child(2){animation-delay:.14s}.btn:nth-child(3){animation-delay:.2s}
+    .btn:nth-child(4){animation-delay:.26s}.btn:nth-child(5){animation-delay:.32s}.btn:nth-child(6){animation-delay:.38s}
+    .btn .ic{width:42px;height:42px;flex:0 0 42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:.25s}
+    .btn .ic svg{width:22px;height:22px;fill:currentColor}
+    .btn .t{flex:1;text-align:right}
+    .btn .t small{display:block;font-weight:500;font-size:12.5px;opacity:.6;margin-top:2px}
+    .btn .arr{opacity:.4;transition:.25s;font-size:18px}
+    .btn:hover{transform:translateY(-2px);border-color:var(--c);background:rgba(255,255,255,.09);box-shadow:0 10px 26px -10px var(--c)}
+    .btn:hover .ic{background:var(--c);color:#fff}
+    .btn:hover .arr{opacity:1;transform:translateX(-4px)}
+    .fb{--c:#1877F2}.ig{--c:#E1306C}.wa{--c:#25D366}.mp{--c:#EA4335}.idea{--c:var(--g-400)}.rate{--c:#F5B301}
+    .ig:hover .ic{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}
+
+    /* panels */
+    .panel{display:none;margin-top:-4px;padding:16px;border-radius:16px;background:rgba(0,0,0,.18);border:1px solid var(--line);animation:rise .35s ease both}
+    .panel.open{display:block}
+    .panel label{font-size:14px;color:var(--g-200);display:block;margin-bottom:6px}
+    .panel input,.panel textarea{width:100%;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);
+      color:var(--cream);font:500 15px 'Tajawal';padding:11px 13px;margin-bottom:10px;outline:none;transition:border-color .2s}
+    .panel textarea{min-height:110px;resize:vertical}
+    .panel input:focus,.panel textarea:focus{border-color:var(--g-300)}
+    .panel ::placeholder{color:rgba(246,248,238,.4)}
+    .send{width:100%;border:0;border-radius:12px;padding:12px;font:800 16px 'Tajawal';cursor:pointer;color:var(--g-900);
+      background:linear-gradient(90deg,var(--g-300),var(--g-400));transition:filter .2s,transform .2s}
+    .send:hover{filter:brightness(1.08);transform:translateY(-1px)}
+    .send:disabled{opacity:.6;cursor:wait}
+    .stars{display:flex;flex-direction:row-reverse;justify-content:center;gap:6px;margin:4px 0 12px}
+    .stars button{background:none;border:0;cursor:pointer;padding:2px;transition:transform .15s}
+    .stars svg{width:38px;height:38px;fill:rgba(255,255,255,.14);transition:fill .15s}
+    .stars button:hover,.stars button:hover~button{transform:scale(1.1)}
+    .stars button:hover svg,.stars button:hover~button svg,.stars button.on svg,.stars button.on~button svg{fill:#F5B301}
+    .rate-label{text-align:center;font-weight:700;color:var(--g-200);min-height:22px;margin-bottom:8px}
+    .msg{text-align:center;font-weight:700;margin-top:10px;min-height:20px}
+    .msg:empty{display:none}
+    .msg.ok{color:var(--g-300)}.msg.err{color:#ff8a80}
+
+    footer{text-align:center;padding:20px 20px 24px;font-size:13px;color:rgba(246,248,238,.55);border-top:1px solid var(--line);margin-top:14px}
+    footer a{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:1.5px;color:var(--g-300);text-decoration:none;transition:color .2s}
+    footer a:hover{color:#fff}
+    footer .dev{direction:ltr;display:inline-block}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="cover" role="img" aria-label="Green Market"></div>
+    <div class="avatar" role="img" aria-label="شعار جرين ماركت"></div>
+
+    <div class="head">
+      <h1>جرين ماركت</h1>
+      <div class="en">GREEN MARKET</div>
+      <p>حاجياتك كلها بمكان واحد 🌿</p>
+    </div>
+
+    <nav class="links">
+      <a id="lnk-fb" class="btn fb" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1 .5-2 2-2h1.5V2.1A20 20 0 0 0 14.7 2C12 2 10 3.7 10 6.7v2.8H7v4h3V22h4z"/></svg></span>
+        <span class="t">فيسبوك<small>تابع عروضنا اليومية</small></span><span class="arr">‹</span>
+      </a>
+      <a id="lnk-ig" class="btn ig" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 7.9c-.1-1.6-.4-3-1.6-4.2S17.7 2.2 16.1 2.1C14.5 2 9.5 2 7.9 2.1c-1.6.1-3 .4-4.2 1.6S2.2 6.3 2.1 7.9C2 9.5 2 14.5 2.1 16.1c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.6.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.6.1-6.6 0-8.2zm-2.1 10a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.9.4s-4.6.1-5.9-.4a3.3 3.3 0 0 1-1.9-1.9C3.7 16.6 3.8 13.5 3.8 12s-.1-4.6.4-5.9a3.3 3.3 0 0 1 1.9-1.9C7.4 3.7 10.5 3.8 12 3.8s4.6-.1 5.9.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.9s.1 4.6-.4 5.9z"/></svg></span>
+        <span class="t">إنستغرام<small>صور ومنتجات جديدة</small></span><span class="arr">‹</span>
+      </a>
+      <a id="lnk-wa" class="btn wa" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.4-.5.3-.5v-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c.7.3 1.3.5 1.7.6a4.2 4.2 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.2-.6-.4zM12 21.8a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.7 17.9L0 24l6.3-1.6A11.8 11.8 0 0 0 12 23.8 11.8 11.8 0 0 0 20.4 3.6z"/></svg></span>
+        <span class="t">واتساب<small>اطلب أو استفسر مباشرة</small></span><span class="arr">‹</span>
+      </a>
+      <a id="lnk-map" class="btn mp" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+        <span class="t">موقعنا على الخريطة<small>Google Maps</small></span><span class="arr">‹</span>
+      </a>
+
+      <button class="btn idea" type="button" data-panel="p-idea" aria-expanded="false">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2zM9 20h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/></svg></span>
+        <span class="t">احكيلنا اللي في بالك<small>فكرة، ملاحظة أو اقتراح</small></span><span class="arr">⌄</span>
+      </button>
+      <form id="p-idea" class="panel" autocomplete="on">
+        <label for="f-name">الاسم (اختياري)</label>
+        <input id="f-name" name="name" maxlength="60" placeholder="اسمك">
+        <label for="f-msg">رسالتك</label>
+        <textarea id="f-msg" name="message" maxlength="1000" required placeholder="اكتب فكرتك أو ملاحظتك هنا..."></textarea>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+        <button class="send" type="submit">إرسال</button>
+        <div class="msg" aria-live="polite"></div>
+      </form>
+
+      <button class="btn rate" type="button" data-panel="p-rate" aria-expanded="false">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.3 7 .9-5.1 4.8 1.3 6.9L12 17.6 5.8 20.9 7.1 14 2 9.2l7-.9z"/></svg></span>
+        <span class="t">قيّم تجربتك<small>من 5 نجوم</small></span><span class="arr">⌄</span>
+      </button>
+      <form id="p-rate" class="panel">
+        <div class="stars" role="radiogroup" aria-label="التقييم"></div>
+        <div class="rate-label">اختر عدد النجوم</div>
+        <textarea name="comment" maxlength="500" placeholder="تعليق (اختياري)" style="min-height:70px"></textarea>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+        <button class="send" type="submit">إرسال التقييم</button>
+        <div class="msg" aria-live="polite"></div>
+      </form>
+    </nav>
+
+    <footer>
+      <span class="dev">Developed by <a href="https://nadimalamleh.com/" target="_blank" rel="noopener">NADIM ALAMLEH</a></span>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script>
+  (function(){
+    const C = window.GM_CONFIG;
+    // links
+    document.getElementById('lnk-fb').href  = C.facebook;
+    document.getElementById('lnk-ig').href  = C.instagram;
+    document.getElementById('lnk-wa').href  = 'https://wa.me/' + C.whatsappNumber + '?text=' + encodeURIComponent(C.whatsappGreeting);
+    document.getElementById('lnk-map').href = C.googleMaps;
+
+    // panels toggle
+    document.querySelectorAll('[data-panel]').forEach(b=>{
+      b.addEventListener('click',()=>{
+        const p=document.getElementById(b.dataset.panel), open=!p.classList.contains('open');
+        document.querySelectorAll('.panel').forEach(x=>x.classList.remove('open'));
+        document.querySelectorAll('[data-panel]').forEach(x=>x.setAttribute('aria-expanded','false'));
+        if(open){p.classList.add('open');b.setAttribute('aria-expanded','true');}
+      });
+    });
+
+    // stars
+    const labels=['','سيئة 😞','مقبولة 😐','جيدة 🙂','ممتازة 😃','رائعة جداً 🤩'];
+    const starsBox=document.querySelector('.stars'), rateLbl=document.querySelector('.rate-label');
+    let rating=0;
+    for(let i=5;i>=1;i--){ // row-reverse => visual order 1..5 from right
+      const s=document.createElement('button'); s.type='button'; s.dataset.v=i;
+      s.setAttribute('role','radio'); s.setAttribute('aria-label',i+' نجوم');
+      s.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 2l3 6.3 7 .9-5.1 4.8 1.3 6.9L12 17.6 5.8 20.9 7.1 14 2 9.2l7-.9z"/></svg>';
+      s.onclick=()=>{rating=i;starsBox.querySelectorAll('button').forEach(x=>{x.classList.toggle('on',+x.dataset.v===i);x.setAttribute('aria-checked',+x.dataset.v===i)});rateLbl.textContent=labels[i];};
+      starsBox.appendChild(s);
+    }
+
+    // sending
+    async function send(payload){
+      const f=C.feedback;
+      payload.page=location.href; payload.time=new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});
+      if(f.mode==='apps_script'){
+        // text/plain avoids CORS preflight with Apps Script
+        await fetch(f.appsScriptUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+        return;
+      }
+      if(f.mode==='web3forms'){
+        const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+          body:JSON.stringify(payload.type==='rating'
+            ? {access_key:f.web3formsKey,subject:'⭐ Green Market - تقييم جديد '+payload.rating+'/5',from_name:'Green Market',
+               'التقييم':'★'.repeat(payload.rating)+'☆'.repeat(5-payload.rating)+' ('+payload.rating+'/5)','التعليق':payload.comment||'—','الوقت':payload.time}
+            : {access_key:f.web3formsKey,subject:'💡 Green Market - رسالة جديدة',from_name:'Green Market',
+               'الاسم':payload.name||'—','الرسالة':payload.message,'الوقت':payload.time})});
+        const j=await r.json(); if(!j.success) throw new Error(j.message); return;
+      }
+      // whatsapp fallback: opens chat with prefilled text to Diaa
+      const txt = payload.type==='rating'
+        ? `⭐ تقييم جديد: ${payload.rating}/5\n${payload.comment||''}`
+        : `💡 رسالة من الموقع\nالاسم: ${payload.name||'-'}\n${payload.message}`;
+      window.open('https://wa.me/'+f.diaaWhatsapp+'?text='+encodeURIComponent(txt),'_blank');
+    }
+
+    function wire(form,build,okText){
+      const msg=form.querySelector('.msg'), btn=form.querySelector('.send');
+      form.addEventListener('submit',async e=>{
+        e.preventDefault(); msg.className='msg'; msg.textContent='';
+        if(form.website.value) return; // honeypot
+        const data=build(); if(!data) return;
+        const key='gm_last_'+data.type, last=+localStorage.getItem(key)||0;
+        if(Date.now()-last<60000){msg.className='msg err';msg.textContent='انتظر دقيقة قبل الإرسال مرة أخرى';return;}
+        btn.disabled=true; btn.textContent='جاري الإرسال...';
+        try{ await send(data); try{localStorage.setItem(key,Date.now())}catch(_){}
+          msg.className='msg ok'; msg.textContent=okText(data); form.reset(); return data; }
+        catch(err){ msg.className='msg err'; msg.textContent='صار خطأ، جرّب مرة ثانية'; }
+        finally{ btn.disabled=false; btn.textContent=form.id==='p-rate'?'إرسال التقييم':'إرسال'; }
+      });
+    }
+
+    const ideaForm=document.getElementById('p-idea');
+    wire(ideaForm,()=>{
+      const m=ideaForm.message.value.trim(); if(m.length<3){ideaForm.querySelector('.msg').className='msg err';ideaForm.querySelector('.msg').textContent='اكتب رسالتك أولاً';return null;}
+      return {type:'idea',name:ideaForm.name.value.trim(),message:m};
+    },()=>'وصلت رسالتك، شكراً إلك 💚');
+
+    const rateForm=document.getElementById('p-rate');
+    wire(rateForm,()=>{
+      if(!rating){rateForm.querySelector('.msg').className='msg err';rateForm.querySelector('.msg').textContent='اختر عدد النجوم أولاً';return null;}
+      return {type:'rating',rating,comment:rateForm.comment.value.trim()};
+    },d=>{
+      const r=d.rating; rating=0; starsBox.querySelectorAll('button').forEach(x=>x.classList.remove('on')); rateLbl.textContent='اختر عدد النجوم';
+      if(r>=4 && C.googleReviewUrl){ setTimeout(()=>{ if(confirm('شكراً! بتحب تكتب تقييمك على Google كمان؟')) window.open(C.googleReviewUrl,'_blank'); },400); }
+      return 'شكراً على تقييمك ⭐';
+    });
+  })();
+  </script>
+</body>
+</html>
